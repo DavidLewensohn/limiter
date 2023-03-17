@@ -2,17 +2,12 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"limiter/service"
 	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
 )
-
-type IncrementRequest struct {
-	Inc int32 `json:"inc" binding:"-"`
-}
 
 func main() {
 	threshold := flag.Uint("threshold", 5, "Max requests in a time period")
@@ -58,7 +53,6 @@ func handleCounterIncrement(c *gin.Context, limiter *service.Limiter) {
 
 	if !blocked {
 		counter := limiter.UpdateCounter(incrementReq.Inc)
-		fmt.Println("real counter:", counter)
 		c.JSON(http.StatusOK, gin.H{"count": counter})
 	} else {
 		cache := limiter.UpdateCache(incrementReq.Inc)
@@ -66,4 +60,9 @@ func handleCounterIncrement(c *gin.Context, limiter *service.Limiter) {
 	}
 }
 
+type IncrementRequest struct {
+	Inc int32 `json:"inc" binding:"-"`
+}
+
+// Example curl POST request:
 // curl -d '{ "inc":1}' -H "Content-Type: application/json" -X POST http://localhost:8080/counter
