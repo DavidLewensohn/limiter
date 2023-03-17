@@ -19,6 +19,7 @@ import (
 type CounterResponse struct {
 	Count int32 `json:"count"`
 }
+
 type DelayedResponse struct {
 	Count int32 `json:"delayed"`
 }

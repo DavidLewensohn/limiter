@@ -42,6 +42,7 @@ func newServer(limiter *service.Limiter) *gin.Engine {
 	})
 	return server
 }
+
 func handleCounterIncrement(c *gin.Context, limiter *service.Limiter) {
 	var incrementReq IncrementRequest
 	if err := c.ShouldBindJSON(&incrementReq); err != nil {
