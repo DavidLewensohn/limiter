@@ -18,7 +18,7 @@ The application provides the following API endpoints:
 Returns the current value of the counter:
 ```json
 {
-  "count": <counter>
+  "count": 42
 }
 ```
 - **POST /counter**
@@ -26,10 +26,11 @@ Returns the current value of the counter:
 Updates the counter and returns its current value as above. If the rate limit is exceeded, the request is blocked and the following response is returned:
 ```json
 {
-  "count": <counter>,
+  "count": 2,
   "isBlocked": true
 }
 ```
+In this case the count represents the delayed counter in the cache.
 ## Architecture
 The RequestLimiter app architecture consists of several files, including server.go, counter-service.go, db-service.go, and a test file. The server accepts HTTP GET requests and returns the current counter value. 
 
