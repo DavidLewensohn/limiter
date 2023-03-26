@@ -30,7 +30,7 @@ Updates the counter and returns its current value as above. If the rate limit is
   "isBlocked": true
 }
 ```
-In this case the count represents the delayed counter in the cache.
+In this case the 'count' represents the delayed counter in the cache.
 ## Architecture
 The RequestLimiter app architecture consists of several files, including server.go, counter-service.go, db-service.go, and a test file. The server accepts HTTP GET requests and returns the current counter value. 
 
@@ -45,7 +45,7 @@ go test ./.... -race
 ```
 This command runs all the tests in the current and all subdirectories with the -race flag, which detects race conditions. The tests ensure that the application works as expected and that no issues occur during implementation.
 
-## Conclusion
+## Summary
 RequestLimiter is a simple yet efficient Go application that updates a counter in a database based on incoming GET and POST requests. The rate limiter ensures that the application handles incoming requests efficiently, preventing the system from becoming overwhelmed by too many requests.
 
 If you have any questions, please feel free to reach out to the author of this code.
